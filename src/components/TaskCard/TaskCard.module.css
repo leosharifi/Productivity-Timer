@@ -1,0 +1,88 @@
+.card {
+    background: black;
+    padding: 22px;
+    border-radius: 20px;
+    margin-bottom: 28px;
+    /* box-shadow: 0 5px 20px rgba(0, 0, 0, 0.06); */
+}
+
+.title {
+    font-size: 22px;
+    margin-bottom: 18px;
+}
+
+.taskInput {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.inputField {
+    flex: 1;
+    padding: 12px;
+    font-size: 20px;
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    background-color: black;
+    color: white;
+}
+
+.addBtn {
+    width: 100px;
+    height: 45px;
+    background: #4c84ff;
+    color: white;
+    border-radius: 12px;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+/* Task list */
+.taskList {
+    list-style: none;
+}
+
+.task {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 17px;
+    color: #333;
+    padding-bottom: 12px;
+    cursor: pointer;
+}
+
+.task:last-child {
+    padding-bottom: 0;
+}
+
+/* Circles */
+/* .circle {
+    width: 18px;
+    height: 18px;
+    border: 2px solid #888;
+    border-radius: 50%;
+}
+
+.checkmark {
+    width: 18px;
+    height: 18px;
+    background: #4c84ff;
+    border-radius: 50%;
+    position: relative;
+}
+
+.checkmark::after {
+    content: "";
+    position: absolute;
+    width: 5px;
+    height: 10px;
+    border: 2px solid white;
+    border-left: none;
+    border-top: none;
+    left: 5px;
+    top: 2px;
+    transform: rotate(45deg);
+} */
