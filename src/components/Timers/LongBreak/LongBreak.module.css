@@ -1,0 +1,41 @@
+.timerBox {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 10px;
+
+    p {
+        font-size: 10rem;
+        margin: 0;
+        font-weight: 900;
+        color: #f0f0f5;
+        font-family: 'Montserrat', sans-serif;
+        letter-spacing: 2px;
+        text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+    }
+
+    button {
+        padding: 1rem 5rem;
+        font-size: 50px;
+        font-family: 'Poppins', sans-serif;
+        font-weight: 700;
+        color: #ffffff;
+        background: linear-gradient(135deg, #4f46e5, #6366f1);
+        border-radius: 10px;
+        border: none;
+        cursor: pointer;
+        transition: all 0.25s ease;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    }
+
+    button:hover {
+        transform: scale(1.05);
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
+    }
+
+    button:active {
+        transform: scale(0.98);
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    }
+}

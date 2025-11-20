@@ -1,39 +1,53 @@
-import styles from "./Header.module.css";
-import { useState } from "react";
+// src/components/Header/Header.tsx
+"use client";
 
-const Header = () => {
-  const [isDropdownVisible, setIsDropdownVisible] = useState(true);
-  const LoadtheDropDownContent = () => {
-    const newSate = !isDropdownVisible;
-    setIsDropdownVisible(newSate);
-    (
-      document.querySelector(`.${styles.dropdownContent}`) as HTMLButtonElement
-    ).style.display = newSate ? "none" : "flex";
-  };
+import { useState } from "react";
+import styles from "./Header.module.css";
+
+interface HeaderProps {
+  onOpenBackground: () => void;
+}
+
+export default function Header({ onOpenBackground }: HeaderProps) {
+  const [dropdownVisible, setDropdownVisible] = useState(false);
 
   return (
     <header className={styles.header}>
-      <div>
-        <h1>Productivity Timer</h1>
+      <div className={styles.brand}>
+        <h1 onClick={() => window.location.reload()}>Productivity Timer</h1>
       </div>
+
       <div className={styles.settingsContainer}>
         <button
           className={styles.settingsButton}
-          onClick={LoadtheDropDownContent}
+          onClick={() => setDropdownVisible((v) => !v)}
+          aria-expanded={dropdownVisible}
+          aria-haspopup="true"
         >
           ⚙️ Settings
         </button>
-        <div className={styles.dropdownContent}>
-          <button className={styles.changeThemeButton}>🎨 Theme</button>
-          <button className={styles.changeThemeButton}>🎨 Theme</button>
-          <button className={styles.changeThemeButton}>🎨 Theme</button>
-          <button className={styles.changeThemeButton}>🎨 Theme</button>
-          <button className={styles.changeThemeButton}>🎨 Theme</button>
-          <button className={styles.changeThemeButton}>🎨 Theme</button>
-        </div>
+
+        {dropdownVisible && (
+          <div className={styles.dropdownContent}>
+            <button
+              className={styles.changeThemeButton}
+              onClick={() => {
+                onOpenBackground();
+                setDropdownVisible(false);
+              }}
+            >
+              🎨 Theme
+            </button>
+
+            <button
+              className={styles.changeThemeButton}
+              onClick={() => alert("Other setting")}
+            >
+              ⚙️ Other
+            </button>
+          </div>
+        )}
       </div>
     </header>
   );
-};
-
-export default Header;
+}
