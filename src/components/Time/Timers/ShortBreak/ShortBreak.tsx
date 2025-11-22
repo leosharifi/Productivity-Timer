@@ -6,9 +6,13 @@ export default function ShortBreak() {
   const [time, setTime] = useState(5 * 60);
   const [isRunning, setIsRunning] = useState(false);
   const [startButton, setStartButton] = useState("Start");
-  const audioAlert = useRef<HTMLAudioElement | null>(null);
+  const shortBreakAlert = useRef<HTMLAudioElement | null>(null);
+  const startButtonClickAlert = useRef<HTMLAudioElement | null>(null);
   useEffect(() => {
-    audioAlert.current = new Audio("/sound/shortBreakAlert.mp3");
+    shortBreakAlert.current = new Audio("/sound/shortBreakAlert.mp3");
+    startButtonClickAlert.current = new Audio(
+      "/sound/StartButtonClickAlert.mp3"
+    );
   }, []);
   useEffect(() => {
     if (!isRunning || time <= 0) return;
@@ -19,7 +23,7 @@ export default function ShortBreak() {
   }, [isRunning, time]);
   useEffect(() => {
     if (time === 0) {
-      if (audioAlert.current) audioAlert.current.play();
+      if (shortBreakAlert.current) shortBreakAlert.current.play();
       // alert("Do you like to focus or take a long Break");
 
       const timeout = setTimeout(() => {
@@ -31,12 +35,27 @@ export default function ShortBreak() {
     }
   });
   function runTheTime() {
-    if (startButton === "start") {
+    if (startButton === "Start") {
       setIsRunning(true);
+      if (startButtonClickAlert.current) {
+        startButtonClickAlert.current
+          .play()
+          .catch((error) => console.log("Audio failed:", error));
+      }
     } else if (startButton === "Pause ⏯️") {
       setIsRunning(false);
+      if (startButtonClickAlert.current) {
+        startButtonClickAlert.current
+          .play()
+          .catch((error) => console.log("Audio failed:", error));
+      }
     } else {
       setIsRunning(true);
+      if (startButtonClickAlert.current) {
+        startButtonClickAlert.current
+          .play()
+          .catch((err) => console.log("Audio failed:", err));
+      }
     }
   }
   const minutes = Math.floor(time / 60);

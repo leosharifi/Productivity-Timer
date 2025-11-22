@@ -1,4 +1,4 @@
-import React, { act } from "react";
+import React from "react";
 import styles from "./BreakTypesButton.module.css";
 import Pomodoro from "../Timers/Pomodoro/Pomodoro";
 import ShortBreak from "../Timers/ShortBreak/ShortBreak";

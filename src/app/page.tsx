@@ -2,9 +2,9 @@
 "use client";
 
 import { useState } from "react";
-import Header from "@/src/components/Header/Header";
-import BackgroundColors from "@/src/components/BackgroundColors/BackgroundColors";
-import BreakTypesButtons from "../components/BreakTypesButtons/BreakTypesButtons";
+import Header from "@/src/components/Time/Header/Header";
+import BackgroundColors from "@/src/components/Time/BackgroundColors/BackgroundColors";
+import BreakTypesButtons from "../components/Time/BreakTypesButtons/BreakTypesButtons";
 
 // import styles from "./page.module.css";
 
