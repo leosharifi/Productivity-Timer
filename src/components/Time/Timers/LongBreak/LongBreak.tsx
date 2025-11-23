@@ -3,7 +3,8 @@ import styles from "./LongBreak.module.css";
 import { useEffect, useState, useRef } from "react";
 
 export default function LongBreak() {
-  const [time, setTime] = useState(15 * 60);
+  const intialVal = 15 * 60;
+  const [time, setTime] = useState(intialVal);
   const [isRunning, setIsRunning] = useState(false);
   const [startButton, setStartButton] = useState("Start");
 
@@ -32,13 +33,13 @@ export default function LongBreak() {
       // alert("Time to Focus");
 
       const timeout = setTimeout(() => {
-        setTime(15 * 60);
+        setTime(intialVal);
         setIsRunning(false);
         setStartButton("Start");
       });
       return () => clearTimeout(timeout);
     }
-  }, [time]);
+  }, [time, intialVal]);
 
   function runTheTime() {
     if (startButton === "Start") {

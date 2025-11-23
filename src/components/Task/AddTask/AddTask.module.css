@@ -1,0 +1,112 @@
+.taskSubmitionContainer {
+    width: 100%;
+    padding: 30px;
+    background: #ffffff;
+    border-radius: 16px;
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.08);
+    border: 1px solid #e2e8f0;
+}
+
+.taskSubmiter {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-bottom: 32px;
+}
+
+.taskSubmiter label {
+    font-weight: 600;
+    color: #2d3748;
+    font-size: 1.1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.taskSubmiter input {
+    padding: 14px 16px;
+    font-size: 1rem;
+    border: 2px solid #e2e8f0;
+    border-radius: 12px;
+    outline: none;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.taskSubmiter input:focus {
+    border-color: #5c6bc0;
+    box-shadow: 0 0 0 4px rgba(92, 107, 192, 0.15);
+}
+
+.taskSubmiter input::placeholder {
+    color: #a0aec0;
+}
+
+.taskSubmiter button {
+    align-self: flex-start;
+    padding: 14px 28px;
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: white;
+    background: linear-gradient(135deg, #5c6bc0 0%, #3f51b5 100%);
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.25s ease;
+}
+
+.taskSubmiter button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(92, 107, 192, 0.3);
+}
+
+.taskSubmiter button:active {
+    transform: translateY(0);
+}
+
+
+/* Task List Area */
+.taskContent {
+    min-height: 140px;
+}
+
+/* Empty State */
+.taskContent p {
+    text-align: center;
+    padding: 40px 20px;
+    color: #718096;
+    font-size: 1.15rem;
+    background: #f8f9ff;
+    border: 2px dashed #cbd5e0;
+    border-radius: 14px;
+    margin: 0;
+}
+
+/* Actual Task List */
+.taskContent ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.taskContent li {
+    background: #f8f9ff;
+    padding: 16px 20px;
+    border-radius: 12px;
+    border-left: 5px solid #5c6bc0;
+    font-size: 1.1rem;
+    color: #2d3748;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
+    transition: all 0.25s ease;
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.taskContent li:hover {
+    transform: translateX(6px);
+    box-shadow: 0 6px 16px rgba(92, 107, 192, 0.18);
+    border-left-color: #3f51b5;
+}

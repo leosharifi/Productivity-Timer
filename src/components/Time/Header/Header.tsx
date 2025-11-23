@@ -30,20 +30,59 @@ export default function Header({ onOpenBackground }: HeaderProps) {
         {dropdownVisible && (
           <div className={styles.dropdownContent}>
             <button
-              className={styles.changeThemeButton}
+              className={styles.dropdownItem}
               onClick={() => {
                 onOpenBackground();
                 setDropdownVisible(false);
               }}
             >
-              🎨 Theme
+              <span className={styles.icon}>🎨</span> Change Theme
             </button>
 
+            <div className={styles.inputItemContainer}>
+              <label htmlFor="save-time">Set Time for Pomodoro (min)</label>
+              <div className={styles.inputGroup}>
+                <input
+                  type="number"
+                  id="save-time"
+                  className={styles.inputField}
+                  placeholder="5"
+                  min="1"
+                />
+                <button className={styles.actionButton}>Save</button>
+              </div>
+            </div>
+            <div className={styles.inputItemContainer}>
+              <label htmlFor="save-time">Set Time for Short Break (min)</label>
+              <div className={styles.inputGroup}>
+                <input
+                  type="number"
+                  id="save-time"
+                  className={styles.inputField}
+                  placeholder="5"
+                  min="1"
+                />
+                <button className={styles.actionButton}>Save</button>
+              </div>
+            </div>
+            <div className={styles.inputItemContainer}>
+              <label htmlFor="save-time">Set Time for Long Break (min)</label>
+              <div className={styles.inputGroup}>
+                <input
+                  type="number"
+                  id="save-time"
+                  className={styles.inputField}
+                  placeholder="5"
+                  min="1"
+                />
+                <button className={styles.actionButton}>Save</button>
+              </div>
+            </div>
             <button
-              className={styles.changeThemeButton}
+              className={styles.dropdownItem}
               onClick={() => alert("Other setting")}
             >
-              ⚙️ Other
+              <span className={styles.icon}>⚙️</span> Other Settings
             </button>
           </div>
         )}

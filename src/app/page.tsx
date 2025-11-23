@@ -5,7 +5,7 @@ import { useState } from "react";
 import Header from "@/src/components/Time/Header/Header";
 import BackgroundColors from "@/src/components/Time/BackgroundColors/BackgroundColors";
 import BreakTypesButtons from "../components/Time/BreakTypesButtons/BreakTypesButtons";
-
+import Task from "../components/Task/Task";
 // import styles from "./page.module.css";
 
 export default function Page() {
@@ -19,6 +19,7 @@ export default function Page() {
         onClose={() => setShowBackgroundColors(false)}
       />
       <BreakTypesButtons />
+      <Task />
     </main>
   );
 }

@@ -3,7 +3,8 @@ import styles from "./ShortBreak.module.css";
 import { useEffect, useState, useRef } from "react";
 
 export default function ShortBreak() {
-  const [time, setTime] = useState(5 * 60);
+  const intialVal = 5 * 60;
+  const [time, setTime] = useState(intialVal);
   const [isRunning, setIsRunning] = useState(false);
   const [startButton, setStartButton] = useState("Start");
   const shortBreakAlert = useRef<HTMLAudioElement | null>(null);
@@ -27,13 +28,13 @@ export default function ShortBreak() {
       // alert("Do you like to focus or take a long Break");
 
       const timeout = setTimeout(() => {
-        setTime(5 * 60);
+        setTime(intialVal);
         setIsRunning(false);
         setStartButton("Start");
       });
       return () => clearTimeout(timeout);
     }
-  });
+  }, [time, intialVal]);
   function runTheTime() {
     if (startButton === "Start") {
       setIsRunning(true);

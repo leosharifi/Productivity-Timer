@@ -30,33 +30,122 @@
     background: rgba(255, 255, 255, 0.05);
 }
 
+/* --- Dropdown Container --- */
 .dropdownContent {
     position: absolute;
-    top: 44px;
+    top: 48px;
+    /* Slightly more space from the parent */
     right: 0;
-    min-width: 160px;
+    min-width: 220px;
+    /* Increased width for better content display */
     display: flex;
     flex-direction: column;
-    gap: 8px;
-    background-color: #545252;
-    padding: 10px;
-    border-radius: 6px;
+    gap: 4px;
+    /* Reduced gap between standard items */
+
+    /* Updated Design: Modern Dark Theme */
+    background-color: #2c2f33;
+    /* Dark background */
+    border: 1px solid #3d4044;
+    /* Subtle border */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+    /* Deeper shadow */
+
+    padding: 8px;
+    /* Slightly less padding around the edge */
+    border-radius: 8px;
+    /* More modern, rounder corners */
     z-index: 50;
+    font-family: sans-serif;
 }
 
-.changeThemeButton {
+/* --- Standard Dropdown Buttons (Theme/Other) --- */
+.dropdownItem {
     border: none;
-    color: #fff;
+    color: #dcddde;
+    /* Light, readable text color */
     cursor: pointer;
     font-size: 0.95rem;
     width: 100%;
-    padding: 8px;
+    padding: 10px 12px;
+    /* Increased padding */
     background: none;
     text-align: left;
-    border-radius: 4px;
+    border-radius: 6px;
+    /* Match container rounding */
+    display: flex;
+    align-items: center;
+    transition: background-color 0.2s, color 0.2s;
+    /* Smooth transitions */
 }
 
-.changeThemeButton:hover {
-    background-color: rgba(255, 255, 255, 0.08);
-    color: #000;
+/* Updated Hover State */
+.dropdownItem:hover {
+    background-color: #3f4448;
+    /* Lighter background on hover */
+    color: white;
+}
+
+.icon {
+    margin-right: 10px;
+    font-size: 1.1rem;
+}
+
+/* --- Input Group (Set Auto-Save Time) --- */
+.inputItemContainer {
+    padding: 8px 12px 12px 12px;
+    /* Padding for the section */
+    margin: 4px 0;
+    border-bottom: 1px solid #3d4044;
+    /* Separator line */
+    border-top: 1px solid #3d4044;
+}
+
+.inputItemContainer label {
+    color: #b9bbbe;
+    /* Subdued label color */
+    font-size: 0.85rem;
+    margin-bottom: 6px;
+    display: block;
+    font-weight: 500;
+}
+
+.inputGroup {
+    display: flex;
+    gap: 8px;
+    align-items: stretch;
+}
+
+.inputField {
+    padding: 8px;
+    background-color: #3d4044;
+    /* Darker input background */
+    border: 1px solid #4f545c;
+    color: white;
+    border-radius: 4px;
+    width: 80px;
+    /* Fixed width for number input */
+    font-size: 0.9rem;
+    text-align: center;
+}
+
+/* --- Action Button (Save) --- */
+.actionButton {
+    padding: 8px 12px;
+    background-color: #4CAF50;
+    /* Vibrant Green (Success/Action color) */
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-weight: 600;
+    flex-grow: 1;
+    /* Button fills remaining space */
+    transition: background-color 0.2s;
+}
+
+.actionButton:hover {
+    background-color: #43a047;
+    /* Darker green on hover */
 }

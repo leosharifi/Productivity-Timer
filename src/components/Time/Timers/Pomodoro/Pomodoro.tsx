@@ -3,7 +3,8 @@ import styles from "./Pomodoro.module.css";
 import { useEffect, useState, useRef } from "react";
 
 export default function Pomodoro() {
-  const [time, setTime] = useState(0.1 * 60);
+  const initialVal = 25 * 60;
+  const [time, setTime] = useState(initialVal);
   const [isRunning, setIsRunning] = useState(false);
   const [startButton, setStartButton] = useState("Start");
   const audioAlert = useRef<HTMLAudioElement | null>(null);
@@ -28,13 +29,13 @@ export default function Pomodoro() {
       // alert("Time for a Short Break");
 
       const timeout = setTimeout(() => {
-        setTime(0.1 * 60);
+        setTime(initialVal);
         setIsRunning(false);
         setStartButton("Start");
       });
       return () => clearTimeout(timeout);
     }
-  });
+  }, [time, initialVal]);
   function runTheTime() {
     if (startButton === "Start") {
       setIsRunning(true);
