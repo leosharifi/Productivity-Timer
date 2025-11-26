@@ -64,12 +64,22 @@ export default function Header({ onOpenBackground }: HeaderProps) {
   return (
     <header className={styles.header}>
       <div className={styles.brand}>
-        <h1 onClick={() => window.location.reload()}>
+        {/* <h1 onClick={() => window.location.reload()}>
           <Image
             src="/images/appIcon.png"
             alt="App Icon"
             width={40}
             height={40}
+          />
+          Productivity Timer
+        </h1> */}
+        <h1 onClick={() => window.location.reload()}>
+          <Image
+            src="https://www.warnersdistillery.com/cdn/shop/t/89/assets/icon-play.svg?v=183604887498931475681631106457"
+            alt="Productivity Timer Icon"
+            width={40}
+            height={40}
+            style={{ marginRight: 8 }}
           />
           Productivity Timer
         </h1>
