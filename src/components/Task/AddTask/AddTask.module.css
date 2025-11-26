@@ -111,3 +111,8 @@
     box-shadow: 0 6px 16px rgba(92, 107, 192, 0.18);
     border-left-color: #3f51b5;
 }
+
+.completedTask {
+    text-decoration: line-through;
+    opacity: 0.6;
+}
