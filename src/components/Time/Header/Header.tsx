@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import styles from "./Header.module.css";
 import { useTimer } from "@/src/app/context/TimerContext";
 import Image from "next/image";
+import Link from "next/link";
 
 interface HeaderProps {
   onOpenBackground: () => void;
@@ -105,6 +106,11 @@ export default function Header({ onOpenBackground }: HeaderProps) {
               }}
             >
               <span className={styles.icon}>🎨</span> Change Theme
+            </button>
+            <button className={styles.dropdownItem}>
+              <Link href="/about" style={{}} className={styles.linkOverlay}>
+                👋 About This App
+              </Link>
             </button>
             {/* Pomo Input */}
             <div className={styles.inputItemContainer}>

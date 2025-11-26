@@ -81,6 +81,20 @@
     /* Smooth transitions */
 }
 
+.linkOverlay {
+    display: block;
+    color: white;
+    font-size: 16px;
+    font-weight: 500;
+    text-decoration: none;
+    border-radius: 8px;
+    transition: color 0.2s ease;
+}
+
+.linkOverlay:hover {
+    color: #0070f3;
+}
+
 /* Updated Hover State */
 .dropdownItem:hover {
     background-color: #3f4448;
