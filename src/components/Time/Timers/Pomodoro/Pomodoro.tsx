@@ -10,15 +10,15 @@ export default function Pomodoro() {
   const [startButton, setStartButton] = useState("Start");
   const audioAlert = useRef<HTMLAudioElement | null>(null);
   const startButtonClickAlert = useRef<HTMLAudioElement | null>(null);
-  // ←←←← ADD THIS BLOCK — THIS IS THE FIX ←←←←
+
   useEffect(() => {
     setTimeout(() => {
       setTime(pomoMinutes * 60);
       setIsRunning(false);
       setStartButton("Start");
     }, 100);
-  }, [pomoMinutes]); // ← Reacts instantly when you save new time!
-  // ←←←← END OF FIX ←←←←
+  }, [pomoMinutes]);
+
   useEffect(() => {
     audioAlert.current = new Audio("/sound/pomodoroBreakAlert.mp3");
     startButtonClickAlert.current = new Audio(

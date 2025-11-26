@@ -10,17 +10,20 @@ export default function ShortBreak() {
   const [startButton, setStartButton] = useState("Start");
   const shortBreakAlert = useRef<HTMLAudioElement | null>(null);
   const startButtonClickAlert = useRef<HTMLAudioElement | null>(null);
+
   useEffect(() => {
     setTimeout(() => {
       setTime(shortBreakMinutes * 60);
     }, 100);
   }, [shortBreakMinutes]);
+
   useEffect(() => {
     shortBreakAlert.current = new Audio("/sound/shortBreakAlert.mp3");
     startButtonClickAlert.current = new Audio(
       "/sound/StartButtonClickAlert.mp3"
     );
   }, []);
+
   useEffect(() => {
     if (!isRunning || time <= 0) return;
     const interval = setInterval(() => {
@@ -28,6 +31,7 @@ export default function ShortBreak() {
     }, 1000);
     return () => clearInterval(interval);
   }, [isRunning, time]);
+
   useEffect(() => {
     if (time === 0) {
       if (shortBreakAlert.current) shortBreakAlert.current.play();
@@ -41,6 +45,7 @@ export default function ShortBreak() {
       return () => clearTimeout(timeout);
     }
   }, [time, shortBreakMinutes]);
+
   function runTheTime() {
     if (startButton === "Start") {
       setIsRunning(true);
@@ -65,6 +70,7 @@ export default function ShortBreak() {
       }
     }
   }
+
   const minutes = Math.floor(time / 60);
   const seconds = time % 60;
   return (

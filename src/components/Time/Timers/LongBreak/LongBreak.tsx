@@ -11,6 +11,7 @@ export default function LongBreak() {
 
   const longBreakAlert = useRef<HTMLAudioElement | null>(null);
   const startButtonClickAlert = useRef<HTMLAudioElement | null>(null);
+  // Change the UI timer
   useEffect(() => {
     setTimeout(() => {
       setTime(longBreakMinutes * 60);
@@ -32,7 +33,7 @@ export default function LongBreak() {
     }, 1000);
     return () => clearInterval(interval);
   }, [isRunning, time]);
-
+  //reset the timer while ending
   useEffect(() => {
     if (time === 0) {
       if (longBreakAlert.current) longBreakAlert.current.play();

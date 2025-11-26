@@ -1,4 +1,3 @@
-// src/components/Header/Header.tsx
 "use client";
 
 import { useState, useEffect, use } from "react";
@@ -21,6 +20,7 @@ export default function Header({ onOpenBackground }: HeaderProps) {
   const [longBreakInput, setLongBreakInput] = useState(
     longBreakMinutes.toString()
   );
+
   // const [saveInputVal, setSaveInputVal] = useState();
   useEffect(() => {
     setTimeout(() => {
@@ -29,6 +29,7 @@ export default function Header({ onOpenBackground }: HeaderProps) {
       setShortBreakInput(shortBreakMinutes.toString());
     }, 100);
   }, [pomoMinutes, longBreakMinutes, shortBreakMinutes]);
+
   const handleSavePomo = () => {
     const minutes = parseInt(pomoInput);
     if (isNaN(minutes) || minutes < 1) {
@@ -38,6 +39,7 @@ export default function Header({ onOpenBackground }: HeaderProps) {
     }
     setPomoMinutes(minutes);
   };
+
   const handleSaveShorBreak = () => {
     const minutes = parseInt(shortBreakInput);
     if (isNaN(minutes) || minutes < 1) {
@@ -85,7 +87,7 @@ export default function Header({ onOpenBackground }: HeaderProps) {
             >
               <span className={styles.icon}>🎨</span> Change Theme
             </button>
-
+            {/* Pomo Input */}
             <div className={styles.inputItemContainer}>
               <label htmlFor="save-time">Set Time for Pomodoro (min)</label>
               <div className={styles.inputGroup}>
@@ -109,6 +111,7 @@ export default function Header({ onOpenBackground }: HeaderProps) {
                 </button>
               </div>
             </div>
+            {/* ShortBreak Input */}
             <div className={styles.inputItemContainer}>
               <label htmlFor="save-time">Set Time for Short Break (min)</label>
               <div className={styles.inputGroup}>
@@ -132,6 +135,7 @@ export default function Header({ onOpenBackground }: HeaderProps) {
                 </button>
               </div>
             </div>
+            {/* LongBreak Input */}
             <div className={styles.inputItemContainer}>
               <label htmlFor="save-time">Set Time for Long Break (min)</label>
               <div className={styles.inputGroup}>

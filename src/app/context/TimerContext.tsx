@@ -35,7 +35,6 @@ const TimerProvider = ({ children }: { children: ReactNode }) => {
 
 export default TimerProvider;
 
-//4. Custom hook to use the the context easily
 export function useTimer() {
   const context = useContext(TimerContext);
   if (!context) {
