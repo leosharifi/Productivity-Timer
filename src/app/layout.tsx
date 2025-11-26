@@ -18,7 +18,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body>
+      <body data-new-gr-c-s-check-loaded="14.1264.0" data-gr-ext-installed="">
         <TimerProvider>{children}</TimerProvider>
       </body>
     </html>
