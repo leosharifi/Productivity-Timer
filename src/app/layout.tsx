@@ -1,4 +1,5 @@
 import "./globals.css";
+import TimerProvider from "@/src/app/context/TimerContext";
 
 export const metadata = {
   title: "Productivity Timer",
@@ -12,7 +13,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body>
+        <TimerProvider>{children}</TimerProvider>
+      </body>
     </html>
   );
 }

@@ -1,15 +1,21 @@
 "use client";
 import styles from "./LongBreak.module.css";
 import { useEffect, useState, useRef } from "react";
+import { useTimer } from "@/src/app/context/TimerContext";
 
 export default function LongBreak() {
-  const intialVal = 15 * 60;
-  const [time, setTime] = useState(intialVal);
+  const { longBreakMinutes } = useTimer();
+  const [time, setTime] = useState(longBreakMinutes * 60);
   const [isRunning, setIsRunning] = useState(false);
   const [startButton, setStartButton] = useState("Start");
 
   const longBreakAlert = useRef<HTMLAudioElement | null>(null);
   const startButtonClickAlert = useRef<HTMLAudioElement | null>(null);
+  useEffect(() => {
+    setTimeout(() => {
+      setTime(longBreakMinutes * 60);
+    }, 100);
+  }, [longBreakMinutes]);
 
   useEffect(() => {
     longBreakAlert.current = new Audio("/sound/longBreakAlert.mp3");
@@ -33,13 +39,13 @@ export default function LongBreak() {
       // alert("Time to Focus");
 
       const timeout = setTimeout(() => {
-        setTime(intialVal);
+        setTime(longBreakMinutes * 60);
         setIsRunning(false);
         setStartButton("Start");
       });
       return () => clearTimeout(timeout);
     }
-  }, [time, intialVal]);
+  }, [time, longBreakMinutes]);
 
   function runTheTime() {
     if (startButton === "Start") {

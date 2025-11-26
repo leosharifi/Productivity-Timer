@@ -1,14 +1,20 @@
 "use client";
 import styles from "./ShortBreak.module.css";
 import { useEffect, useState, useRef } from "react";
+import { useTimer } from "@/src/app/context/TimerContext";
 
 export default function ShortBreak() {
-  const intialVal = 5 * 60;
-  const [time, setTime] = useState(intialVal);
+  const { shortBreakMinutes } = useTimer();
+  const [time, setTime] = useState(shortBreakMinutes * 60);
   const [isRunning, setIsRunning] = useState(false);
   const [startButton, setStartButton] = useState("Start");
   const shortBreakAlert = useRef<HTMLAudioElement | null>(null);
   const startButtonClickAlert = useRef<HTMLAudioElement | null>(null);
+  useEffect(() => {
+    setTimeout(() => {
+      setTime(shortBreakMinutes * 60);
+    }, 100);
+  }, [shortBreakMinutes]);
   useEffect(() => {
     shortBreakAlert.current = new Audio("/sound/shortBreakAlert.mp3");
     startButtonClickAlert.current = new Audio(
@@ -28,13 +34,13 @@ export default function ShortBreak() {
       // alert("Do you like to focus or take a long Break");
 
       const timeout = setTimeout(() => {
-        setTime(intialVal);
+        setTime(shortBreakMinutes * 60);
         setIsRunning(false);
         setStartButton("Start");
       });
       return () => clearTimeout(timeout);
     }
-  }, [time, intialVal]);
+  }, [time, shortBreakMinutes]);
   function runTheTime() {
     if (startButton === "Start") {
       setIsRunning(true);

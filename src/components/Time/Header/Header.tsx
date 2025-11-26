@@ -1,8 +1,9 @@
 // src/components/Header/Header.tsx
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect, use } from "react";
 import styles from "./Header.module.css";
+import { useTimer } from "@/src/app/context/TimerContext";
 
 interface HeaderProps {
   onOpenBackground: () => void;
@@ -10,6 +11,52 @@ interface HeaderProps {
 
 export default function Header({ onOpenBackground }: HeaderProps) {
   const [dropdownVisible, setDropdownVisible] = useState(false);
+  const { pomoMinutes, setPomoMinutes } = useTimer();
+  const [pomoInput, setPomoInput] = useState(pomoMinutes.toString());
+  const { shortBreakMinutes, setShortBreakMinutes } = useTimer();
+  const [shortBreakInput, setShortBreakInput] = useState(
+    shortBreakMinutes.toString()
+  );
+  const { longBreakMinutes, setLongBreakMinutes } = useTimer();
+  const [longBreakInput, setLongBreakInput] = useState(
+    longBreakMinutes.toString()
+  );
+  // const [saveInputVal, setSaveInputVal] = useState();
+  useEffect(() => {
+    setTimeout(() => {
+      setPomoInput(pomoMinutes.toString());
+      setLongBreakInput(longBreakMinutes.toString());
+      setShortBreakInput(shortBreakMinutes.toString());
+    }, 100);
+  }, [pomoMinutes, longBreakMinutes, shortBreakMinutes]);
+  const handleSavePomo = () => {
+    const minutes = parseInt(pomoInput);
+    if (isNaN(minutes) || minutes < 1) {
+      alert("Please enter a valid number (1 or more)");
+      setPomoInput(pomoMinutes.toString());
+      return;
+    }
+    setPomoMinutes(minutes);
+  };
+  const handleSaveShorBreak = () => {
+    const minutes = parseInt(shortBreakInput);
+    if (isNaN(minutes) || minutes < 1) {
+      alert("Please enter a valid number(1 or more)");
+      setShortBreakInput(shortBreakMinutes.toString());
+      return;
+    }
+    setShortBreakMinutes(minutes);
+  };
+
+  const handleSaveLongBreak = () => {
+    const minutes = parseInt(longBreakInput);
+    if (isNaN(minutes) || minutes < 1) {
+      alert("Please enter a valid number (1 or more)");
+      setLongBreakInput(longBreakMinutes.toString());
+      return;
+    }
+    setLongBreakMinutes(minutes);
+  };
 
   return (
     <header className={styles.header}>
@@ -48,8 +95,18 @@ export default function Header({ onOpenBackground }: HeaderProps) {
                   className={styles.inputField}
                   placeholder="5"
                   min="1"
+                  onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+                    setPomoInput(e.target.value);
+                  }}
+                  value={pomoInput}
+                  onKeyDown={(e) => e.key === "Enter" && handleSavePomo()}
                 />
-                <button className={styles.actionButton}>Save</button>
+                <button
+                  onClick={handleSavePomo}
+                  className={styles.actionButton}
+                >
+                  Save
+                </button>
               </div>
             </div>
             <div className={styles.inputItemContainer}>
@@ -61,8 +118,18 @@ export default function Header({ onOpenBackground }: HeaderProps) {
                   className={styles.inputField}
                   placeholder="5"
                   min="1"
+                  onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+                    setShortBreakInput(e.target.value);
+                  }}
+                  value={shortBreakInput}
+                  onKeyDown={(e) => e.key === "Enter" && handleSaveShorBreak()}
                 />
-                <button className={styles.actionButton}>Save</button>
+                <button
+                  onClick={handleSaveShorBreak}
+                  className={styles.actionButton}
+                >
+                  Save
+                </button>
               </div>
             </div>
             <div className={styles.inputItemContainer}>
@@ -74,8 +141,18 @@ export default function Header({ onOpenBackground }: HeaderProps) {
                   className={styles.inputField}
                   placeholder="5"
                   min="1"
+                  onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+                    setLongBreakInput(e.target.value);
+                  }}
+                  value={longBreakInput}
+                  onKeyDown={(e) => e.key === "Enter" && handleSaveLongBreak()}
                 />
-                <button className={styles.actionButton}>Save</button>
+                <button
+                  onClick={handleSaveLongBreak}
+                  className={styles.actionButton}
+                >
+                  Save
+                </button>
               </div>
             </div>
             <button

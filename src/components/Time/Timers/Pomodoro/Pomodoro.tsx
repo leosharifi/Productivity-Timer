@@ -1,15 +1,24 @@
 "use client";
 import styles from "./Pomodoro.module.css";
 import { useEffect, useState, useRef } from "react";
+import { useTimer } from "@/src/app/context/TimerContext";
 
 export default function Pomodoro() {
-  const initialVal = 25 * 60;
-  const [time, setTime] = useState(initialVal);
+  const { pomoMinutes } = useTimer();
+  const [time, setTime] = useState(pomoMinutes * 60);
   const [isRunning, setIsRunning] = useState(false);
   const [startButton, setStartButton] = useState("Start");
   const audioAlert = useRef<HTMLAudioElement | null>(null);
   const startButtonClickAlert = useRef<HTMLAudioElement | null>(null);
-
+  // ←←←← ADD THIS BLOCK — THIS IS THE FIX ←←←←
+  useEffect(() => {
+    setTimeout(() => {
+      setTime(pomoMinutes * 60);
+      setIsRunning(false);
+      setStartButton("Start");
+    }, 100);
+  }, [pomoMinutes]); // ← Reacts instantly when you save new time!
+  // ←←←← END OF FIX ←←←←
   useEffect(() => {
     audioAlert.current = new Audio("/sound/pomodoroBreakAlert.mp3");
     startButtonClickAlert.current = new Audio(
@@ -25,17 +34,16 @@ export default function Pomodoro() {
   }, [isRunning, time]);
   useEffect(() => {
     if (time === 0) {
-      if (audioAlert.current) audioAlert.current.play();
-      // alert("Time for a Short Break");
+      audioAlert.current?.play();
 
-      const timeout = setTimeout(() => {
-        setTime(initialVal);
+      setTimeout(() => {
+        setTime(pomoMinutes * 60);
         setIsRunning(false);
         setStartButton("Start");
-      });
-      return () => clearTimeout(timeout);
+      }, 1000);
     }
-  }, [time, initialVal]);
+  }, [time, pomoMinutes]);
+
   function runTheTime() {
     if (startButton === "Start") {
       setIsRunning(true);
