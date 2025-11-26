@@ -1,4 +1,4 @@
-![Productivity Timer Screenshot](./public/preview.png)
+![Productivity Timer Screenshot](./public/images/appDemo.png)
 
 # 🕒 Productivity Timer
 
